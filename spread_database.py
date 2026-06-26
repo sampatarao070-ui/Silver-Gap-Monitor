@@ -76,4 +76,4 @@ while True:
     print("MT5   :", mt5_price)
     print("Spread:", spread)
 
-    time.sleep(5)
+    time.sleep(5) 

@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Silver Gap Monitor</title>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <style>
+        body{
+            font-family: Arial;
+            margin:40px;
+            background:#f5f5f5;
+        }
+
+        h1{
+            color:#333;
+        }
+
+        .card{
+            background:white;
+            padding:20px;
+            margin-bottom:20px;
+            border-radius:10px;
+            box-shadow:0px 0px 10px lightgray;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<h1>Silver Gap Monitor</h1>
+
+<div class="card">
+    <h2>Current Prices</h2>
+
+    <p><b>BingX Price:</b> {{ bingx }}</p>
+
+    <p><b>MT5 Price:</b> {{ mt5 }}</p>
+
+    <p><b>Spread:</b> {{ spread }}</p>
+</div>
+
+<div class="card">
+
+    <h2>Spread History</h2>
+
+    <div id="chart"></div>
+
+</div>
+
+<script>
+
+var data = [{
+    x: {{ times | tojson }},
+    y: {{ spreads | tojson }},
+    type: 'scatter',
+    mode: 'lines+markers'
+}];
+
+Plotly.newPlot('chart', data);
+
+</script>
+
+</body>
+</html>
